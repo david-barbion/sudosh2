@@ -75,6 +75,7 @@ struct s_user
   struct s_env mail;
   struct s_env shell;
   struct s_env logname;
+  struct s_env lang;
   struct passwd *pw;
 };
 
@@ -124,6 +125,7 @@ main (int argc, char *argv[], char *environ[])
   double oldtime, newtime;
   struct stat ttybuf;
   int c;
+  int written=0;
 
   user.vshell = NULL;
   user.shell.ptr = NULL;
@@ -157,6 +159,8 @@ main (int argc, char *argv[], char *environ[])
 
   if (strlen (user.term.ptr) < 1)
     user.term.ptr = "dumb";
+
+  user.lang.ptr = getenv ("LANG");
 
   snprintf(sysconfdir, BUFSIZ - 1, "%s/sudosh.conf", SYSCONFDIR);
   parse (&sudosh_option, sysconfdir);
@@ -582,7 +586,7 @@ prepchild (struct pst *pst)
   char newargv[BUFSIZ];
   char *env_list[] =
     { user.term.str, user.home.str, user.shell.str, user.logname.str,
-    user.path.str, NULL
+    user.path.str, user.lang.str, NULL
   };
 
   close (0);
@@ -667,11 +671,13 @@ rawmode (int ttyfd)
       exit (EXIT_FAILURE);
     }
 
-  termnew.c_cc[VEOF] = 1;
-  termnew.c_iflag = BRKINT | ISTRIP | IXON | IXANY;
-  termnew.c_oflag = 0;
-  termnew.c_cflag = termorig.c_cflag;
-  termnew.c_lflag &= ~ECHO;
+  // rawmode
+  memcpy(&termnew, &termorig, sizeof(termnew)) ;
+  termnew.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON);
+  termnew.c_oflag &= ~OPOST;
+  termnew.c_cflag &= ~(CSIZE | PARENB);
+  termnew.c_cflag |= CS8;
+  termnew.c_lflag &= ~(ECHO | ECHONL | ICANON | ISIG | IEXTEN);
 
 #ifdef TCSETS
   (void) ioctl (ttyfd, TCSETS, &termnew);
