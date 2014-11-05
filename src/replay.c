@@ -99,6 +99,7 @@ int main(int argc, char **argv, char **environ)
 	    fprintf(stdout,
 		    "-d	Specify alternate LOGDIR where sessions are stored.\n");
 	    fprintf(stdout, "-h	Show help synopsis.\n");
+	    fprintf(stdout, "-i	Show only interactive sessions in list.\n");
 	    fprintf(stdout, "-v,-V	Show version.\n\n");
 	    fprintf(stdout,
 		    "ID\n	The session id of which you wish to view.  The format is user-id\n");
