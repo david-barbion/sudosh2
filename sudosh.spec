@@ -2,8 +2,8 @@
 #
 %define origname sudosh2
 %define name sudosh2
-%define version 1.0.4
-%define release 1.el5
+%define version 1.0.5
+%define release 1.%{dist}
 
 Name: %{name}
 Version: %{version}
@@ -12,10 +12,11 @@ Summary: Logged root shell that can be used for auditing
 
 Group: System/SDL-custom
 License: OSL
-URL: http://sourceforge.net/projects/sudosh2/
-Source: http://sudosh2.sourceforge.net/sudosh2-%{version}.tbz2
+URL: https://github.com/david-barbion/sudosh2
+Source: %{name}-%{version}.tar.gz
 
-Packager: John Barton <jbarton@technicalworks.net>
+
+Packager: David Barbion <dbarbion@gmail.com>
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 # BuildArch: i386
 Requires: sudo
@@ -39,6 +40,7 @@ default shell           = /bin/bash
 delimiter               = -
 syslog.priority         = LOG_NOTICE
 syslog.facility         = LOG_DAEMON
+clearenvironment        = no
 
 # Allow Sudosh to execute -c arguements?  If so, what?
 -c arg allow = scp
@@ -49,7 +51,8 @@ EOF
 
 %build
 %configure \
-	--program-prefix="%{?_program_prefix}"
+	--program-prefix="%{?_program_prefix}" \
+  --enable-recordinput
 %{__make} %{?_smp_mflags}
 
 %install
@@ -74,6 +77,10 @@ install -m 0744 sudosh.conf.tmp %{buildroot}/etc/sudosh.conf
 %dir %attr(0733 root root) /var/log/sudosh
 
 %changelog
+* Thu Sep 04 2014 David Barbion <dbarbion@gmail.com> - 1.0.5-1
+- Fixes UTF-8 support (pass LANG variable to shell)
+- Fixes missing 'written' variable
+
 * Fri Jul 09 2010 John Barton <jbarton@technicalworks.net> - 1.0.4-1
 - Update for version 1.0.4
 

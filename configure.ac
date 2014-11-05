@@ -10,7 +10,7 @@ AC_CANONICAL_SYSTEM
 test "$sysconfdir" = '${prefix}/etc' && sysconfdir='/etc'
 
 AC_CONFIG_HEADER([config.h])
-AM_INIT_AUTOMAKE(sudosh2, 1.0.5)
+AM_INIT_AUTOMAKE
 AC_PROG_CC
 
 recordinput=0
@@ -78,7 +78,7 @@ fi
 AC_HEADER_DIRENT
 AC_HEADER_STDC
 
-AC_CHECK_HEADERS(unistd.h stdlib.h string.h errno.h stdarg.h stdio.h)
+AC_CHECK_HEADERS(unistd.h stdlib.h string.h errno.h stdarg.h stdio.h stdbool.h)
 AC_CHECK_HEADERS(sgtty.h pty.h signal.h time.h sys/time.h fcntl.h stropts.h)
 AC_CHECK_HEADERS(util.h termios.h sys/termios.h sys/types.h libutil.h)
 AC_CHECK_HEADERS(features.h sys/ioctl.h pwd.h syslog.h usersec.h)

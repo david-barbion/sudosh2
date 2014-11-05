@@ -61,6 +61,8 @@ int main(int argc, char **argv, char **environ)
     session *scan;
     session *last;
 
+    bool show_interactive_only = false;
+
     progname = argv[0];
 
     if ((p = (char *) strrchr(progname, '/')) != (char *) 0)
@@ -77,7 +79,7 @@ int main(int argc, char **argv, char **environ)
 	     config_option.fdl);
 
     while (1) {
-	c = getopt(argc, argv, "d:hVv");
+	c = getopt(argc, argv, "d:hVvi");
 
 	if (c == EOF)
 	    break;
@@ -134,6 +136,9 @@ int main(int argc, char **argv, char **environ)
 	case 'd':
 	    strncpy(config_option.logdir, optarg, BUFSIZ - 1);
 	    break;
+  case 'i': /* show only interactive replays */
+      show_interactive_only = true;
+      break;
 	default:
 	    fprintf(stderr, "%s: unrecognized option `%c'\n", progname, c);
 	    fprintf(stderr, "Try `%s -h' for more information.\n",
@@ -345,10 +350,14 @@ int main(int argc, char **argv, char **environ)
 	}
 	close(scan->script.fd);
 
-	if(!strcmp(scan->type, "interactive"))
-		fprintf(stdout, "%-19s %-8s %-12s %-12s %s\n", scan->date,
+	if(!strcmp(scan->type, "interactive")) {
+    if (show_interactive_only == true)
+  	  continue;
+    else
+      fprintf(stdout, "%-19s %-8s %-12s %-12s %s\n", scan->date,
 			"-c arg", scan->from, scan->to, scan->id);
-	else
+
+	}else
 		fprintf(stdout, "%-19s %-8s %-12s %-12s %s\n", scan->date,
 			int2smalltime(scan->secs), scan->from, scan->to, scan->id);
 	last = scan;
