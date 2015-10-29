@@ -1,0 +1,6 @@
+sudosh2 (1.0.5-2) stable; urgency=low
+
+  * Support for LANG variable
+  * Support for build package as non root
+
+ -- David Barbion <dbarbion@gmail.com>  Wed, 29 Oct 2014 23:27:40 +0100

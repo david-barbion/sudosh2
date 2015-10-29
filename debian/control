@@ -1,0 +1,27 @@
+Source: sudosh2
+Section: admin
+Priority: optional
+Maintainer: David Barbion <dbarbion@gmail.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+Homepage: http://blog.230uedubac.fr
+Vcs-Git: git://github.com/david-barbion/sudosh2
+Vcs-Browser: https://github.com/david-barbion/sudosh2
+
+Package: sudosh2
+Architecture: any 
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Sudosh is a filter and can be used as a login sell
+  sudosh takes advantage of pty devices in order to sit between the user's keyboard 
+  and a program, in this case a shell.
+  sudosh was designed specifically to be used in conjunction with sudo or by
+  itself as a login shell..  sudosh allows the execution of a root shell with
+  logging.  Every command the user types within the root shell is logged as
+  well as the output.
+  How is this different than "sudo -s" or "sudo /bin/sh" ?
+  Using "sudo -s" or other methods doesn't log commands typed to syslog.
+  Generally the commands are logged to a file such as .sh_history and if you
+  use a shell such as csh that doesn't support command-line logging you're
+  out of luck.
+  sudosh fills this gap.  No matter what shell you use, all of the command
+  lines are logged to syslog (including vi keystrokes.)
