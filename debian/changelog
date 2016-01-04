@@ -1,6 +1,7 @@
-sudosh2 (1.0.5-2) stable; urgency=low
+sudosh2 (1.0.7.2-3ubuntu1ppa2) wily; urgency=low
 
   * Support for LANG variable
   * Support for build package as non root
+  * Fixed install script
 
- -- David Barbion <dbarbion@gmail.com>  Wed, 29 Oct 2014 23:27:40 +0100
+ -- David Barbion <davidb@230ruedubac.fr>  Wed, 29 Oct 2014 23:27:40 +0100

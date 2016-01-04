@@ -11,7 +11,7 @@
 #                    <...>
 ### END INIT INFO
 
-# Author: David Barbion <dbarbion@gmail.com>
+# Author: David Barbion <davidb@230ruedubac.fr>
 
 # Do NOT "set -e"
 

@@ -1,7 +1,7 @@
 Source: sudosh2
 Section: admin
 Priority: optional
-Maintainer: David Barbion <dbarbion@gmail.com>
+Maintainer: David Barbion <davidb@230ruedubac.fr>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.4
 Homepage: http://blog.230uedubac.fr

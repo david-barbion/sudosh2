@@ -4,7 +4,7 @@ Source: https://github.com/david-barbion/sudosh2
 
 Files: *
 Copyright: 2004,2005 Douglas Richard Hanks, Jr. <dhanks@gmail.com>
-           2014 David Barbion <dbarbion@gmail.com>
+           2014 David Barbion <davidb@230ruedubac.fr>
 License: The Open Software License v. 2.0
 
  This Open Software License (the "License") applies to any original work of
@@ -184,7 +184,7 @@ License: The Open Software License v. 2.0
 # If you want to use GPL v2 or later for the /debian/* files use 
 # the following clauses, or change it to suit. Delete these two lines
 Files: debian/*
-Copyright: 2014 David Barbion <dbarbion@gmail.com>
+Copyright: 2014 David Barbion <davidb@230ruedubac.fr>
 License: GPL-2+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

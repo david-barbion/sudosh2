@@ -232,8 +232,8 @@
 	* Made input logging optinoal, and disabled by default. This is a configure option now.
 	* Added an updated .spec file
 
-2014-09-03 David Barbion <dbarbion@mgail.com>
-	* Release 1.0.5.
+2014-09-03 David Barbion <davidb@230ruedubac.fr>
+	* Release 1.0.7.
 	* Fixes UTF-8 support (pass LANG variable to shell)
 	* Fixes missing 'written' variable
 
